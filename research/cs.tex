@@ -18,12 +18,6 @@
 
 My research spans two broad areas: Information retrieval and Natural Language Processing. Applications like Question answering, event extraction and summarization systems, and web search providing easy access and organization to the vast amounts information on the web. These challenging applications require computer systems to extract, understand and reason with knowledge present in natural language texts. This long-standing Artificial Intelligence (AI) vision has tremendous societal and scientific impacts. My research is motivated by this vision and aims at building large scale open domain knowledge targeted towards specific applications.
 
-%These are challenging applications that require computer systems to extract, organize, understand and reason with information in natural language texts. 
-%I am motivated by applications that require computer systems to extract, organize, understand and reason with information in natural language texts. Pursuit of this long-standing Artificial Intelligence (AI) vision has tremendous societal and scientific impacts. For example applications like Question answering, event extraction, summarization systems, and web search provide easy access and organization to the vast amounts information on the web. Many of these challenging applications benefit from access to large scale open-domain knowledge.
-
-%Applications like Question answering, event extraction and summarization systems augment web search by providing easy access and organization to the vast amounts information on the web. These are challenging applications that require computer systems to extract, organize, understand and reason with information in natural language texts. Pursuit of this long-standing Artificial Intelligence (AI) vision has tremendous societal and scientific impacts.
-%I am motivated by applications that require computer systems to extract, organize, understand and reason with information in natural language texts. Pursuit of this long-standing Artificial Intelligence (AI) vision has tremendous societal and scientific impacts. Applications like Question answering, event extraction and summarization systems augment web search by providing easy access and organization to the vast amounts information on the web. These are challenging applications that require large scale open-domain knowledge. 
-
 Consider a system answering a 4th grade science question:  ``Which is the best conductor of electricity? (A) metal fork (B) rubber boat''. The system needs access to the knowledge that i) a metal fork is made of metal, ii) metals conduct electricity, and iii) properties of a metal apply to things made of metal and reason with this knowledge to arrive at the answer. Consider an event extraction system that is "reading" an article about an arrest event. If the system had knowledge about what a typical arrest event is -- i.e., who the key actors are and what their roles are -- then it can use that information to identify the salient pieces to extract from the article. 
 
 My current research focuses on developing methods for extracting such large scale open-domain knowledge and robust mechanisms for applying this knowledge. For wide applicability, I target methods that meet the following design goals: Scale to arbitrary domains, model semantics without ambiguity, and generalize to unseen contexts. I use Open Information Extraction (Open IE) techniques to extract open-domain relations and representations augmented with semantic classes to reduce ambiguity and improve generalization.
@@ -36,8 +30,7 @@ Here I describe some of my research and lay out my vision for future work.
 
 {\bf Modeling Events}
 
-Event schemas that specify actors and their roles within events are widely used in event extraction. Figure~\ref{fig:arrest} shows an example arrest schema. The key actors are an arresting agent who arrests and charges a suspect, a lawyer who represents the suspect and a judge who rules on the case. %Until recently, these were hand-engineered and consequently were limited to a small number of domains. 
-My research aims to automatically generate these schemas from text with no manual effort with a specific focus on generating coherent schemas.
+Event schemas that specify actors and their roles within events are widely used in event extraction. Figure~\ref{fig:arrest} shows an example arrest schema. The key actors are an arresting agent who arrests and charges a suspect, a lawyer who represents the suspect and a judge who rules on the case. My research aims to automatically generate these schemas from text with no manual effort with a specific focus on generating coherent schemas.
 
 The main premise behind my work is that an accurate model of co-occurring actors and their actions can provide a basis for automatically generating schemas. The main challenge is in defining a suitable representation for the actions. My analysis of the output from a previous system showed that simpler (subject, verb) and (verb, object) pairs are underspecified representations that split critical context. In response, I developed an Open IE triple-based solution that uses a (Arg1, Relation, Arg2) triple that captures more specific information about the actions and reduces ambiguity. However, this reduction in ambiguity comes at a cost of increased sparsity and reduced generalization. 
 \begin{wrapfigure}{r}{0.4\textwidth}
@@ -90,7 +83,6 @@ I also worked on {\em FindAll}, a mobile search engine aimed at improving local 
 {\bf Future Work}
 
 I am interested in three veins of research for future work. First, I am interested in continuing my work on extracting open-domain knowledge from text. In particular, I want to extract rich descriptions of open-domain events that can serve as back-ground knowledge during extraction. Second, I am interested in developing methods that can reason with automatically extracted knowledge. Third, I am interested in applying semantic resources to improve information retrieval techniques.
-% In particular I wish to exploit existing semantic resources and extraction capabilities to build richer semantic structures at scale. I am also interested in developing robust application mechanisms to handle the gaps and noise inherent in such automatically extracted knowledge.
 
 {\bf Event Extraction using script-like knowledge}
 
@@ -100,69 +92,11 @@ Scripts were proposed as a general purpose description of events or scenarios. T
 
 A common theme underlying all these challenges is extrapolating and generalizing from knowledge that can be identified with high precision either from text or from other sources.  Addressing these challenges requires development of high precision methods as well as representations that allow for generalization of the knowledge to new unseen contexts. 
 
-%A {restaurant} script for example is an ordered sequence of actions: A person going to a restaurant, placing an order with a waiter, eating the food, and then paying the bill. 
-%The common theme underlying all these challenges is extrapolating and generalizing from knowledge that can be identified with high precision from text. 
-%Addressing these challenges requires development of high precision methods as well as representations that allow for generalization of the knowledge to new unseen contexts. 
 
-%Second, while schemas are able to merge co-referring entity mentions into actors but do not have a similar mechanism for identifying different mentions of the same action. This presents an opportunity for joint modeling of entity and event co-reference, which has been shown to perform better than independent models.
-
-%-- i.e.,  mentions of the same action. This presents an opportunity for joint modeling of entity and event co-reference, which has been shown to perform better than independent models. Third, schemas do not include causal and temporal ordering of the actions in a scenario. This is challenging because causal and temporal links can be explicit or implicit. 
-
-%I will explore bootstrapping from high precision methods that leverage structural constraints such as transitivity. 
-
-%Inferring causal and temporal ordering of actions is hard because the links can be implicit. I am interested in bootstrapping methods  
-%However, automatically constructing such scripts is a challenging task because many aspects of this knowledge are often not mentioned in text. 
-%I am interested in bootstrapping methods that can detect explicitly mentioned aspects with high-precision and combine information from other large scale semantic resources such as Freebase, YAGO and NELL to bootstrap from explicit mentions to other  
-% and then aggregate the aspects using appropriate generalized representations. 
-
-%For instance, causal links can be explicit (e.g., John ate lunch early {\em because} he was hungry) or implicit (e.g., John ate lunch early. He was hungry). The explicit mentions can be identified more reliably using lexical causal connectives (e.g, {\em because})  but the implicit links are harder. There are other structural constraints such as transitivity (i.e., A causes B and B causes C $\rightarrow$ A causes C) which can further improve precision. The bootstrapping task here is to detect explicit links with high-precision and then aggregate this information
-
-%over generalized representations of the actors and their actions. 
-
-%I am also interested in expanding the open event schemas~\cite{balasubramanian-emnlp13} with extractors i.e., patterns that can be used to detect the actors and their actions in an event. The open schemas provide a high-precision, and open-domain model of events that include the salient actors and their actions. The key steps include identifying and mapping the existing schemas to mentions in text and bootstrapping to identify new patterns that can be used for extraction.  
-%My past work on open event schemas produced coherent models of events in terms of the key actors and their roles and thus provide a strong basis constructing high-quality event extractors at scale. Expanding schemas to include extractors can also be viewed as a bootstrapping procedure starting from a strong high-quality model of an event. As with any bootstrapping approach the challenges are in finding appropriate sources for expansion and avoiding drifting from the source model. 
-
-
-
-
-\eat{Scripts provide a powerful model for extracting information about events from texts. First, they can be used as templates that specify the key actors and their actions. Second, they can resolve ambiguous references in text and fill in missing connections. Consider the sentences ``John went to Bill's restaurant. [He] ordered a steak. [He] paid \$50 in cash for the meal.''. If we are to extract information from these sentences, we'd easily identify that the key actors are John, the restaurant, a waiter who took the order etc. Also, we'd infer that the pronouns in the sentences all refer to John and that John probably ate the steak.  
-
- that can be used as templates for extracting salient information about events, resolve ambiguous references, and fill in missing or implicit connections in text. For example, consider an information extraction system that is
-
-%-- map pronouns to their entities and event references to their mentions, and fill in other missing connections. 
-
-
-A dinner script for example is an ordered sequence of actions: An actor going to a restaurant, placing an order with a waiter, eating the food, and then paying the bill. 
-
-If we read the sentences ``John went to Bill's restaurant and ordered steak. [He] paid \$50 for the meal.'', we easily infer that [He] refers to John and that John most likely ate the steak. Scripts provide valuable general purpose knowledge that can fill in these missing connections but aggregating high-quality scripts is a challenging task because many aspects of this knowledge are often implicit and harder to detect. I am interested in methods that can aggregate and generalize from explicitly mentioned aspects. }
-
-
-%A bootstrapping model can first detect the explicit links with high precision and then aggregate these causal links over generalized representations of the actors and the actions. For example, we can learn that if X ate then it was most likely because X was hungry.
-
-%Scripts can help resolve ambiguous references in texts. Consider the following sentence: ``[People] travel to see their [families] when [they] find cheap flights to take [them]". [they] can resolve to families or [people]. Resolving pronouns in this sentence requires the system to know that the entity that travels is the one that is likely to find flights. Rel-grams provides a framework for aggregating this kind of background knowledge. One of the key challenges is the precision/recall trade-off. Past attempts at improving co-reference by adding semantics have mixed results because they either lack coverage or are too imprecise due to over-generalization. Rel-grams addresses this to some extent by including more context to improve accuracy and semantic classes to improve generalization. 
-
-%Scripts also serve as a template for extracting salient information about events by specifying the key actors and their actions. My past work on open event schemas produced coherent models of events in terms of the key actors and their roles and thus provide a strong basis constructing high-quality event extractors at scale. Expanding schemas to include extractors can also be viewed as a bootstrapping procedure starting from a strong high-quality model of an event. As with any bootstrapping approach the challenges are in finding appropriate sources for expansion and avoiding drifting from the source model. 
-
-
-\eat{They are a powerful model of events including key actors, their roles and causal relationships~\cite{schank-scripts75}. Event schemas provide a start for building these script-like knowledge about events. However, they have limited generalization due to the use of a relatively smaller set of semantic classes. For example, the schemas cannot distinguish between a sports person and a baseball player. Moreover, the schemas do not include causality relations or temporal ordering of the actions within the schema. For example, the arrest schema does not  include information about whether the arrest precedes filing charges or vice versa. First, I wish to exploit high-quality entity linking systems and semantic resources such as NELL to expand to a much larger hierarchy of semantic classes. This raises interesting challenges: It is difficult to decide what semantic class to assign to a specific relation. In some cases a general category is preferable (e.g., ([sportsperson], failed, [drug test]) ), whereas in others a more specific category is preferable (e.g., ([baseball player], scored, home run)).  Second, I wish to leverage causality detection methods to annotate the schemas with causal relations. Even though these methods are not perfect, we can devise techniques that can prune errors in aggregation. }
-
-\eat{Script like knowledge provide powerful models of events at discourse level by including key actors, their roles and causal relationships~\cite{schank-scripts75}. Rel-grams and schemas provide a start. However, their generalization is somewhat limited due to use of a limited set of semantic classes chosen in an ad-hoc fashion. Further, they do not include other valuable discourse relations such as causality and temporal ordering. First, I wish to exploit high-quality entity linking systems and semantic resources such as NELL to expand to a much larger hierarchy of semantic classes. This raises interesting challenges. For example, it is difficult to decide what semantic class to assign to a specific relation. In some cases a general category is preferable (e.g., ([sportsperson], failed, [drug test]) ), whereas in others a more specific category is preferable (e.g., ([baseball player], scored, home run)).  Second, I wish to leverage causality detection methods to annotate the schemas with causal relations. Even though these methods are not perfect, we can devise techniques that can prune errors in aggregation. }
-
-\eat{
-{\bf Event Extraction and Reference Resolution}
-
-Scalable event extraction requires open domain models of events. Existing methods have used manual templates or use probabilistic methods that are unlikely to scale.%Past attempts have either used manual templates~\cite{patwardhan-emnlp09} or have used probabilistic methods that limit application to large scale open domain data~\cite{cheung-naacl13,chambers-emnlp13}. 
-Open event schemas are coherent models of the key actors and their roles and thus provide a strong basis constructing high-quality extractors at scale. Expanding schemas to include extractors can be viewed as a bootstrapping procedure starting from a strong high-quality model of an event. As with any bootstrapping approach the challenges are in finding appropriate sources for expansion and avoiding drifting from the source model. 
-
-Resolving co-reference is a challenging problem that requires broad semantic knowledge in the form of type constraints. Consider the following sentence: ``[People] travel to see their [families] when [they] find cheap flights to take [them]". [they] can resolve to families or [people]. Resolving pronouns in this sentence requires the system to know that the entity that travels is the one that is likely to find flights. Rel-grams provides a framework for aggregating this kind of background knowledge. One of the key challenges is the precision/recall trade-off. Past attempts at improving co-reference by adding semantics have mixed results because they either lack coverage or are too imprecise due to over-generalization. Rel-grams addresses this to some extent by including more context to improve accuracy and semantic classes to improve generalization.
-
-{\bf Process Knowledge}
-}
 {\bf Reasoning with Automatically Extracted Knowledge}
 
-Reasoning with knowledge extracted from texts require robust mechanisms to handle the inherent uncertainty, redundancy, and vocabulary mismatch issues. I am interested in approaches that preserve a deductive style of reasoning as much as possible but revert to feature-based textual entailment style reasoning when necessary. In addition to providing an explanation of the reasoning, this approach explicitly highlights the shortcomings of the extracted knowledge.
-
-%Previous textual entailment approaches that simply combine a large number of weak features. In contrast, I wish to explore approaches that preserve the deductive style of inference as much as possible, but fall back to weaker methods when necessary.  
+Reasoning with knowledge extracted from texts require robust mechanisms to handle the inherent uncertainty, redundancy, and vocabulary mismatch issues. I am interested in approaches that preserve a deductive style of reasoning as much as possible but revert to feature-based textual entailment style reasoning when necessary. I believe this combines the best of both worlds -- explaining the reasoning, showing where the current knowledge is lacking or where textual reasoning is required, while also retaining the robustness of the entailment style methods. 
+%The question answering task is a great testbed to test these ideas. %In addition to providing an explanation of the reasoning, this approach explicitly highlights the shortcomings of the extracted knowledge.
 
 To this end, I am interested in building a probabilistic reasoning framework. Specifically, I want to model question answering as a marginal inference problem in a Markov Logic Network (MLN) with text-based implications as first-order rules and Open IE style relations as evidence. Different from traditional applications of MLNs, the knowledge and rules here are textual, which result in gaps from vocabulary mismatch. To address these gaps, I will build a search solution that uses coarse but fast methods to locate plausible gaps and bridge them using deeper (more expensive) textual entailment techniques. The key challenges here include keeping the search space tractable and to have broad coverage entailment methods to handle lexical variations. 
 
