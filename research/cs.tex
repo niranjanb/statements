@@ -96,35 +96,15 @@ A common theme underlying all these challenges is extrapolating and generalizing
 {\bf Reasoning with Automatically Extracted Knowledge}
 
 Reasoning with knowledge extracted from texts require robust mechanisms to handle the inherent uncertainty, redundancy, and vocabulary mismatch issues. I am interested in approaches that preserve a deductive style of reasoning as much as possible but revert to feature-based textual entailment style reasoning when necessary. I believe this combines the best of both worlds -- explaining the reasoning, showing where the current knowledge is lacking or where textual reasoning is required, while also retaining the robustness of the entailment style methods. 
-%The question answering task is a great testbed to test these ideas. %In addition to providing an explanation of the reasoning, this approach explicitly highlights the shortcomings of the extracted knowledge.
 
 To this end, I am interested in building a probabilistic reasoning framework. Specifically, I want to model question answering as a marginal inference problem in a Markov Logic Network (MLN) with text-based implications as first-order rules and Open IE style relations as evidence. Different from traditional applications of MLNs, the knowledge and rules here are textual, which result in gaps from vocabulary mismatch. To address these gaps, I will build a search solution that uses coarse but fast methods to locate plausible gaps and bridge them using deeper (more expensive) textual entailment techniques. The key challenges here include keeping the search space tractable and to have broad coverage entailment methods to handle lexical variations. 
-
-%Reasoning with knowledge extractedd from texts requires robust approaches. However, past attempts at producing robust approaches has mainly resulted in everything in the kitchen sink style approaches. This has led to measured progress in textual entailment tasks, but they haven't shed much insights into the properties of the systems themselves or on the problem space. In contrast, I am interested in approaches that preserve the deductive style of inference as much as possible while falling back to distributional methods to bridge gaps but within the inference framework. This I believe combines the best of both worlds -- retains the robustness of the entailment style methods while also explicitly showing where the current knowledge is lacking or where textual reasoning is required. The question answering project is a great testbed to test these ideas.
 
 {\bf Information Retrieval}
 
 I am also interested in exploiting semantic knowledge for Information retrieval. In the past, IR applications have had mixed success with using semantic resources. The key limiting factor was the coverage of the resources used and scalability of the methods. Recent advances in large scale language processing and knowledge extraction techniques provide an ideal opportunity to test integration of semantics. Open Information Extraction presents an ideal starting point. It provides fast and a shallow representation of salient information in a corpus that can be used to improve retrieval. 
 
-
-\eat{
-%Resolving co-reference is a challenging problem that requires broad semantic knowledge~\cite{}. Consider the following sentence: ``[People] travel to see their [families] when [they] find cheap flights to take [them]". [they] can resolve to families or [people]. Resolving pronouns in this sentence requires the system to know that the entity that travels is the one that is likely to find flights. Rel-grams provides a framework for aggregating this kind of background knowledge. One of the key challenges is the precision/recall trade-off. Past attempts at improving co-reference by adding semantics have mixed results because they either lack coverage or are too imprecise due to over-generalization. Rel-grams addresses this to some extent by including more context to improve accuracy and semantic classes to improve generalization. [But more needs to be done... What?]
-
-Question answering for passing grade science exams requires extraction and reasoning with implications knowledge. The work on Rel-grams provides a starting point but is seriously limited especially in terms of the amount of context captured. For example, consider the question about 
-...\\
-...\\
-...\\
-
-
-Reasoning with semantic resources constructed from texts requires robust approaches. However, past attempts at producing robust approaches has mainly resulted in everything in the kitchen sink style approaches. This has led to measured progress in textual entailment tasks, but they haven't shed much insights into the properties of the systems themselves or on the problem space. In contrast, I am interested in approaches that preserve the deductive style of inference as much as possible while falling back to distributional methods to bridge gaps but within the inference framework. This I believe combines the best of both worlds -- retains the robustness of the entailment style methods while also explicitly showing where the current knowledge is lacking or where textual reasoning is required. The question answering project is a great testbed to test these ideas...\\
-
-Lastly, I am interested in exploiting semantic resources for Information retrieval. In the past, IR applications have had mixed success with using semantic resources. The key limiting factor was the coverage of the resources used...\\
-}
 {\small
 \bibliographystyle{plain}
 \bibliography{../research-statement,../kia}
 }
 \end{document}
-
-
-\eat{As a first step in this challenging task, we studied the knowledge requirements for passing this exam~\cite{clark-akbc13}. The analysis presented several critical insights into the challenges that lay ahead. Figure~\ref{fig:knowledge-wheel} shows the required knowledge categories as a wheel. In addition to factual knowledge (e.g., iron conducts electricity), we identify three other types of useful knowledge: 1) Definitional knowledge: Terminology questions often test the ability of students to match terminology to its description. 2) Domain knowledge: A wide variety of domain knowledge expressed via general purpose relations such as cause/effect, action/purpose, entity/function and object/property. 3) Implications: To answer many questions the system requires knowledge represented as implications (e.g, animal breathes oxygen $-$enables$\rightarrow$ animal make energy). 4) Domain models: Modeling questions involve ability to reason with certain types of models (e.g. Reasoning with predator-prey models: If population of snakes rise, what happens to the population of frogs?). }
