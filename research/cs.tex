@@ -87,8 +87,14 @@ I also worked on {\em FindAll}, a mobile search engine aimed at improving local 
 \subsection*{Future Work}
 
 Building systems that can understand and reason with natural language texts is one of the central visions of AI. 	 
-I am interested in three veins of research that build towards this vision: i) Acquiring richer knowledge to aid extraction, ii) Reasoning with automatically extracted knowledge, and iii) Using semantic resources to enhance information retrieval. Advances in open-domain relation extraction (e.g., Open Information Extraction techniques) and probabilistic reasoning frameworks (e.g., Markov Logic Networks) 
-Below I describe three specific problems that will be part of my initial efforts in this space.
+I am interested in three veins of research that build towards this vision: 
+\begin{enumerate}
+\item Acquiring richer knowledge forms -- Extracting and understanding information in texts itself requires background knowledge. For example models of salient aspects of certain types of entities (e.g., actors play movies, win awards) can help extract and organize information about people. Similarly, rich descriptions of events or scenarios, processes and their interactions can help in extracting and understanding information about events from texts. Scalable methods for acquiring such background knowledge is essential for extracting richer structures from text.  
+\item Reasoning with knowledge from texts -- Much of world's knowledge is already available in the form of natural language texts. While extraction capabilities are improving, they have several issues that need to be addressed in order to be useful for end applications. 
+\item Semantic search capabilities -- Advent of scalable extraction and language processing capabilities present a great opportunity to push information retrieval toward more semantic representations and retrieval models.
+\end{enumerate}
+%i) Acquiring richer knowledge to aid extraction, ii) Reasoning with automatically extracted knowledge, and iii) Using semantic resources to enhance information retrieval. Advances in open-domain relation extraction (e.g., Open Information Extraction techniques) and probabilistic reasoning frameworks (e.g., Markov Logic Networks) 
+Below I describe three specific problems that will be part of my initial efforts in these areas.
 
 %\begin{itemize}
 %\vspace{-0.1in}
@@ -102,8 +108,8 @@ Below I describe three specific problems that will be part of my initial efforts
 %Second, I am interested in developing methods that can reason with automatically extracted knowledge. 
 %Third, I am interested in applying semantic resources to improve information retrieval.
 
-{\bf Script-like Knowledge for Machine Reading}
-%{\bf Event Extraction using script-like knowledge}
+%{\bf Script-like Knowledge for Machine Reading}
+{\bf Script-like Knowledge for Modeling Events}
 
 Understanding natural language text requires broad coverage open-domain knowledge. For example, ``John went to Bill's restaurant. [He] ordered a steak. [He] paid \$50 in cash for [the meal]''. When we read these sentences, we easily identify that the key actors are John, the restaurant, a waiter who took the order etc. Note that the waiter was never mentioned in the text. Also, we are able to infer that the pronouns in the sentences all refer to John, [the meal] refers to the steak, and going a step further we can even infer that John probably ate the steak before paying for the meal. To do this automatically, we need a rich model of background knowledge about people eating in restaurants.
 
@@ -114,10 +120,40 @@ Scripts were proposed as a general purpose description of events or scenarios. T
 A common theme underlying all these challenges is extrapolating and generalizing from knowledge that can be identified with high precision either from text or from other sources.  Addressing these challenges requires development of high precision methods as well as representations that allow for generalization of the knowledge to new unseen contexts. 
 
 {\bf Reasoning with Automatically Extracted Knowledge}
+%%Effective solutions will vastly improve the applicability of automatically extracted knowledge in challenging tasks like question answering. 
+%As mentioned earlier, question answering, even at a 4th grade level, requires reasoning over a wide variety of knowledge. The required knowledge ranges from facts expressed as simple relations (e.g., {An iron nail {\em is composed of} iron}) to more complex inference rules (e.g., x {\em is} metal $\rightarrow$ x {\em conducts} electricity), most of which can be extracted automatically from text. 
 
-Reasoning with knowledge extracted from texts requires robust mechanisms to handle the inherent uncertainty, redundancy, and vocabulary mismatch issues. I am interested in addressing these in the context of question answering. As mentioned earlier, question answering requires reasoning over a wide variety of knowledge automatically constructed from texts. The required knowledge can range from simple relations (e.g., composed-of(iron nail, iron) ) to inference rules e.g., (x, ISA, metal) $\rightarrow$ (x, conducts, electricity). Probabilistic reasoning frameworks such as Markov Logic Networks (MLN) provide a principled approach to reasoning over knowledge expressible in First-order logic. However, purely deductive MLN formulations are unlikely to succeed because of the textual gaps, which result from the different ways of encoding the same knowledge in text. These gaps can exist anywhere in the reasoning chain and can range from simple (e.g., ) to complex (e.g. ) inference problems themselves. 
+Reasoning is critical to the AI vision and is necessary for several challenging tasks like question answering. As mentioned earlier, question answering, even at a 4th grade level, requires reasoning over a wide variety of knowledge. The required knowledge ranges from facts expressed as simple relations (e.g., {An iron nail {\em is composed of} iron}) to more complex inference rules (e.g., x {\em is} metal $\rightarrow$ x {\em conducts} electricity), most of which can be extracted automatically from text. 
+ 
+Reasoning with knowledge constructed from text presents many challenges including uncertainty, incompleteness, redundancy, and vocabulary mismatch. 
+Unlike pure logic-based approaches, probabilistic frameworks such as Markov Logic Networks (MLN) can handle uncertainty in knowledge.
+However, purely deductive MLN formulations also fail because of gaps in knowledge and vocabulary mismatch issues. The popular alternative in textual entailment is to use purely feature-based entailment methods, which loose the explanatory powers of the deductive formulations. 
 
-Unlike previous feature-based textual entailment approaches, I wish to build approaches that preserve a deductive style of reasoning as much as possible but revert to feature-based textual entailment style reasoning when necessary. For instance, we can build methods that detect and bridge plausible gaps using feature-based textual entailment techniques. This combines the best of both worlds -- explaining the reasoning, showing where the current knowledge is lacking or where textual reasoning is required, while also retaining the robustness of the entailment style methods. The key challenges here include keeping the search space tractable and to have broad coverage entailment methods. 
+I will explore hybrid approaches that preserve the deductive reasoning as much as possible but revert to feature-based entailment reasoning when necessary. For instance, I am currently working on an reasoning framework that use rules and evidence in an MLN formulation but pro-actively detects and bridge plausible gaps using feature-based textual entailment techniques. This combines the best of both worlds -- explaining the reasoning, showing where the current knowledge is lacking or where textual reasoning is required, while also retaining the robustness of the entailment style methods. The key challenges here include keeping the search space tractable and to have broad coverage entailment methods. 
+
+
+%Probabilisitic frameworks such as Markov Logic Networks (MLN) provide a principled approach to handling uncertainty and provide a deductive-style reasoning over knowledge expressible in First-order logic. But purely deductive MLN formulations fail because of the gaps stemming from the incompleteness in knowledge and the vocabulary mismatch issues. These gaps 
+
+
+%In addition to the inherent uncertainty and incompleteness in knowledge, text-based representations also add vocabulary mismatch and redundancy issues. The incompleteness and vocabulary mismatch 
+
+%I am interested in addressing these challenges in the context of question answering. As mentioned earlier, question answering requires reasoning over a wide variety of knowledge extracted from texts. The required knowledge can range from facts expressed as simple relations (e.g., {An iron nail {\em is composed of} iron}) to more complex inference rules (e.g., x {\em is} metal $\rightarrow$ x {\em conducts} electricity). 
+
+%Purely deductive formulations often fail because of gaps in knowledge and vocabulary mismatch issues. Textual entailment approaches instead resort to a feature-based learning approach that looses the attractive explanatory and deep reasoning properties of deductive approaches. I wish to build approaches that preserve a deductive style of reasoning as much as possible but revert to feature-based textual entailment style reasoning when necessary. Markov Logic Networks (MLN) provide a principled approach to reasoning over knowledge expressible in First-order logic. 
+
+%For instance, we can build methods that detect and bridge plausible gaps using feature-based textual entailment techniques. This combines the best of both worlds -- explaining the reasoning, showing where the current knowledge is lacking or where textual reasoning is required, while also retaining the robustness of the entailment style methods. The key challenges here include keeping the search space tractable and to have broad coverage entailment methods. 
+
+%Probabilistic reasoning frameworks such as Markov Logic Networks (MLN) provide a principled approach to reasoning over knowledge expressible in First-order logic. However, purely deductive MLN formulations fail due to gaps, which arise from incompleteness in knowledge and from vocabulary mismatch issues. ther extreme of purely feature-based approaches that loose the attractive properties of deductive style reasoning. 
+
+
+%because of the inherent uncertainty, redundancy, and vocabulary mismatches. 
+%
+
+%Knowledge extracted from texts is inherently uncertainty, requires robust mechanisms to handle the inherent uncertainty, redundancy, and vocabulary mismatch issues. I am interested in addressing these in the context of question answering. As mentioned earlier, question answering requires reasoning over a wide variety of knowledge automatically constructed from texts. The required knowledge can range from simple relations (e.g., {\em iron nail is composed of iron}) to inference rules (e.g., {\em x is a metal} $\rightarrow$ {\em x is a conductor of electricity}). Probabilistic reasoning frameworks such as Markov Logic Networks (MLN) provide a principled approach to reasoning over knowledge expressible in First-order logic. purely deductive MLN formulations
+
+%succeed because of the textual gaps, which result from the different ways of encoding the same knowledge in text. These gaps can exist anywhere in the reasoning chain and can range from simple (e.g., ) to complex (e.g. ) inference problems themselves. 
+
+%Unlike previous feature-based textual entailment approaches, I wish to build approaches that preserve a deductive style of reasoning as much as possible but revert to feature-based textual entailment style reasoning when necessary. For instance, we can build methods that detect and bridge plausible gaps using feature-based textual entailment techniques. This combines the best of both worlds -- explaining the reasoning, showing where the current knowledge is lacking or where textual reasoning is required, while also retaining the robustness of the entailment style methods. The key challenges here include keeping the search space tractable and to have broad coverage entailment methods. 
 
 
 
@@ -134,7 +170,6 @@ Unlike previous feature-based textual entailment approaches, I wish to build app
 {\bf Information Retrieval}
 
 I am also interested in exploiting semantic knowledge for Information retrieval. In the past, IR applications have had mixed success with using semantic resources. The key limiting factor was the coverage of the resources used and scalability of the methods. Recent advances in large scale language processing and knowledge extraction techniques provide an ideal opportunity to test integration of semantics. Open Information Extraction presents an ideal starting point. It provides fast and a shallow representation of salient information in a corpus that can be used to improve retrieval. 
-
 
 
 {\small
